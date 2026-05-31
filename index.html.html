@@ -1,0 +1,412 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Rogelio Inobaya — Tech &amp; Automation Specialist</title>
+<link rel="preconnect" href="https://fonts.googleapis.com"/>
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin/>
+<link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet"/>
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --bg:#0a0c10;
+  --surface:#12151c;
+  --surface2:#1a1e28;
+  --border:#ffffff12;
+  --accent:#00d4aa;
+  --accent2:#0099ff;
+  --text:#e8eaf0;
+  --muted:#7a8099;
+  --font-display:'Syne',sans-serif;
+  --font-body:'DM Sans',sans-serif;
+}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:var(--font-body);font-size:16px;line-height:1.7;overflow-x:hidden}
+body::before{content:'';position:fixed;inset:0;background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");opacity:0.35;pointer-events:none;z-index:0}
+
+nav{position:fixed;top:0;left:0;right:0;z-index:100;display:flex;align-items:center;justify-content:space-between;padding:1.2rem 3rem;background:rgba(10,12,16,0.85);backdrop-filter:blur(16px);border-bottom:1px solid var(--border)}
+.nav-logo{font-family:var(--font-display);font-weight:800;font-size:1.1rem;letter-spacing:.04em;color:var(--text);text-decoration:none}
+.nav-logo span{color:var(--accent)}
+.nav-links{display:flex;gap:2.5rem;list-style:none}
+.nav-links a{color:var(--muted);text-decoration:none;font-size:.9rem;font-weight:400;letter-spacing:.02em;transition:color .2s}
+.nav-links a:hover,.nav-links a.active{color:var(--accent)}
+.nav-cta{background:var(--accent);color:#000;font-family:var(--font-display);font-weight:700;font-size:.82rem;letter-spacing:.06em;text-transform:uppercase;padding:.55rem 1.4rem;border-radius:4px;text-decoration:none;transition:opacity .2s}
+.nav-cta:hover{opacity:.85}
+
+.page{min-height:100vh;position:relative;z-index:1}
+.glow{position:absolute;border-radius:50%;filter:blur(90px);pointer-events:none;z-index:0}
+.glow-1{width:500px;height:500px;background:rgba(0,212,170,.06);top:-100px;right:-100px}
+.glow-2{width:400px;height:400px;background:rgba(0,153,255,.05);bottom:0;left:-80px}
+
+/* HOME */
+#home{display:flex;align-items:center;padding:7rem 3rem 4rem}
+.home-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:center;max-width:1100px;margin:0 auto;width:100%}
+.home-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1.5rem}
+.home-tag::before{content:'';width:24px;height:2px;background:var(--accent)}
+h1{font-family:var(--font-display);font-size:clamp(2.8rem,5vw,4.2rem);font-weight:800;line-height:1.05;letter-spacing:-.02em;margin-bottom:1.2rem}
+h1 em{font-style:normal;color:transparent;-webkit-text-stroke:1px var(--accent);display:block}
+.home-desc{color:var(--muted);font-size:1rem;font-weight:300;max-width:420px;margin-bottom:2.2rem;line-height:1.8}
+.btn-row{display:flex;gap:1rem;flex-wrap:wrap}
+.btn-primary{background:var(--accent);color:#000;font-family:var(--font-display);font-weight:700;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;padding:.75rem 2rem;border-radius:4px;text-decoration:none;transition:opacity .2s}
+.btn-primary:hover{opacity:.85}
+.btn-outline{border:1px solid var(--border);color:var(--text);font-family:var(--font-display);font-weight:600;font-size:.85rem;letter-spacing:.05em;text-transform:uppercase;padding:.75rem 2rem;border-radius:4px;text-decoration:none;transition:border-color .2s,color .2s}
+.btn-outline:hover{border-color:var(--accent);color:var(--accent)}
+
+.photo-col{display:flex;justify-content:center}
+.photo-frame{position:relative;width:320px;height:380px}
+.photo-frame::before{content:'';position:absolute;inset:-12px;border:1px solid var(--accent);border-radius:12px;opacity:.3}
+.photo-frame::after{content:'';position:absolute;top:16px;left:16px;right:-16px;bottom:-16px;background:var(--accent);opacity:.06;border-radius:12px}
+.photo-frame img{width:100%;height:100%;object-fit:cover;object-position:center top;border-radius:8px;position:relative;z-index:2;display:block}
+.photo-badge{position:absolute;bottom:-18px;left:-18px;z-index:3;background:var(--surface2);border:1px solid var(--border);border-radius:8px;padding:.8rem 1.2rem;backdrop-filter:blur(8px)}
+.photo-badge .b-num{font-family:var(--font-display);font-size:1.6rem;font-weight:800;color:var(--accent);line-height:1}
+.photo-badge .b-label{font-size:.7rem;color:var(--muted);letter-spacing:.06em;text-transform:uppercase}
+
+.stats-strip{display:flex;gap:3rem;margin-top:3rem;padding-top:2rem;border-top:1px solid var(--border)}
+.stat-num{font-family:var(--font-display);font-size:1.8rem;font-weight:800;color:var(--text)}
+.stat-label{font-size:.78rem;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
+
+/* SERVICES */
+#services{padding:7rem 3rem}
+.section-inner{max-width:1100px;margin:0 auto}
+.section-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.78rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--accent);margin-bottom:1rem}
+.section-tag::before{content:'';width:24px;height:2px;background:var(--accent)}
+h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:.5rem}
+.section-sub{color:var(--muted);font-weight:300;max-width:500px;margin-bottom:3.5rem}
+
+.services-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1.5rem;margin-bottom:5rem}
+.svc-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:2rem;position:relative;overflow:hidden;transition:border-color .3s,transform .3s}
+.svc-card:hover{border-color:var(--accent);transform:translateY(-4px)}
+.svc-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity .3s}
+.svc-card:hover::before{opacity:1}
+.svc-icon{width:44px;height:44px;border-radius:8px;background:rgba(0,212,170,.1);border:1px solid rgba(0,212,170,.2);display:flex;align-items:center;justify-content:center;margin-bottom:1.2rem;font-size:1.3rem}
+.svc-card h3{font-family:var(--font-display);font-size:1.05rem;font-weight:700;margin-bottom:.6rem}
+.svc-card p{font-size:.88rem;color:var(--muted);line-height:1.7}
+
+/* TOOL CARDS with logos */
+.tools-section{margin-top:1rem}
+.tools-label{font-family:var(--font-display);font-size:.78rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--muted);margin-bottom:1.8rem}
+.tools-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(140px,1fr));gap:1rem}
+.tool-card{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:1.2rem 1rem;display:flex;flex-direction:column;align-items:center;gap:.7rem;transition:border-color .25s,transform .25s,background .25s;cursor:default}
+.tool-card:hover{border-color:var(--accent);transform:translateY(-3px);background:var(--surface2)}
+.tool-logo{width:48px;height:48px;display:flex;align-items:center;justify-content:center}
+.tool-logo svg{width:48px;height:48px}
+.tool-name{font-size:.78rem;font-weight:500;color:var(--muted);text-align:center;letter-spacing:.02em;line-height:1.3}
+.tool-card:hover .tool-name{color:var(--text)}
+
+/* CONTACT */
+#contact{padding:7rem 3rem;min-height:100vh;display:flex;align-items:center}
+.contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:start;max-width:1100px;margin:0 auto;width:100%}
+.contact-info h2{font-family:var(--font-display);font-size:clamp(2rem,4vw,3rem);font-weight:800;line-height:1.1;letter-spacing:-.02em;margin-bottom:1rem}
+.contact-info p{color:var(--muted);font-weight:300;line-height:1.8;margin-bottom:2.5rem}
+.contact-item{display:flex;align-items:center;gap:1rem;margin-bottom:1.2rem;padding:1rem 1.2rem;background:var(--surface);border:1px solid var(--border);border-radius:8px}
+.contact-icon{width:36px;height:36px;background:rgba(0,212,170,.1);border-radius:6px;display:flex;align-items:center;justify-content:center;font-size:1.1rem;flex-shrink:0}
+.contact-detail .c-label{font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted)}
+.contact-detail .c-val{font-size:.9rem;font-weight:500;color:var(--text)}
+.contact-detail a{color:var(--text);text-decoration:none}
+.contact-detail a:hover{color:var(--accent)}
+.contact-form{background:var(--surface);border:1px solid var(--border);border-radius:12px;padding:2.5rem}
+.contact-form h3{font-family:var(--font-display);font-weight:700;font-size:1.15rem;margin-bottom:1.8rem}
+.form-group{margin-bottom:1.2rem}
+.form-group label{display:block;font-size:.78rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);margin-bottom:.5rem}
+.form-group input,.form-group textarea{width:100%;background:var(--surface2);border:1px solid var(--border);border-radius:6px;padding:.8rem 1rem;color:var(--text);font-family:var(--font-body);font-size:.9rem;outline:none;transition:border-color .2s;resize:none}
+.form-group input:focus,.form-group textarea:focus{border-color:var(--accent)}
+.form-group textarea{height:120px}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
+.form-submit{width:100%;background:var(--accent);color:#000;font-family:var(--font-display);font-weight:700;font-size:.85rem;letter-spacing:.06em;text-transform:uppercase;padding:.85rem;border:none;border-radius:6px;cursor:pointer;margin-top:.5rem;transition:opacity .2s}
+.form-submit:hover{opacity:.85}
+#form-success{display:none;text-align:center;padding:1rem;color:var(--accent);font-weight:500}
+
+footer{background:var(--surface);border-top:1px solid var(--border);padding:2rem 3rem;display:flex;align-items:center;justify-content:space-between;position:relative;z-index:1}
+.footer-copy{font-size:.8rem;color:var(--muted)}
+.footer-copy span{color:var(--accent)}
+.footer-links{display:flex;gap:2rem}
+.footer-links a{font-size:.8rem;color:var(--muted);text-decoration:none;transition:color .2s}
+.footer-links a:hover{color:var(--accent)}
+
+.reveal{opacity:0;transform:translateY(28px);transition:opacity .7s ease,transform .7s ease}
+.reveal.visible{opacity:1;transform:none}
+.reveal-delay-1{transition-delay:.1s}
+.reveal-delay-2{transition-delay:.2s}
+.reveal-delay-3{transition-delay:.3s}
+.reveal-delay-4{transition-delay:.4s}
+
+@media(max-width:768px){
+  nav{padding:1rem 1.5rem}
+  .nav-links{display:none}
+  #home{padding:6rem 1.5rem 3rem}
+  .home-grid{grid-template-columns:1fr;gap:3rem}
+  .photo-col{order:-1}
+  .photo-frame{width:240px;height:290px}
+  #services{padding:5rem 1.5rem}
+  #contact{padding:5rem 1.5rem}
+  .contact-grid{grid-template-columns:1fr}
+  .form-row{grid-template-columns:1fr}
+  .stats-strip{gap:1.5rem}
+  .tools-grid{grid-template-columns:repeat(3,1fr)}
+  footer{flex-direction:column;gap:1rem;text-align:center}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a href="#home" class="nav-logo"><span></span></a>
+  <ul class="nav-links">
+    <li><a href="#home" class="active" onclick="setActive(this)">Home</a></li>
+    <li><a href="#services" onclick="setActive(this)">Services</a></li>
+    <li><a href="#contact" onclick="setActive(this)">Contact</a></li>
+  </ul>
+  <a href="#contact" class="nav-cta">Let's Work</a>
+</nav>
+
+<!-- HOME -->
+<section id="home" class="page">
+  <div class="glow glow-1"></div>
+  <div class="glow glow-2"></div>
+  <div class="home-grid">
+    <div>
+      <div class="home-tag reveal">AI &amp; Automation Specialist</div>
+      <h1 class="reveal reveal-delay-1">Hi, I'm<br><em>Rogelio</em>Inobaya.</h1>
+      <p class="home-desc reveal reveal-delay-2">I build smart automation workflows, integrate business applications, and design websites that convert — so you can focus on what matters most.</p>
+      <div class="btn-row reveal reveal-delay-3">
+        <a href="#services" class="btn-primary">See My Services</a>
+        <a href="#contact" class="btn-outline">Get In Touch</a>
+      </div>
+      <div class="stats-strip reveal reveal-delay-4">
+        <div class="stat"><div class="stat-num">12+</div><div class="stat-label">Tools Mastered</div></div>
+        <div class="stat"><div class="stat-num">5+</div><div class="stat-label">Skills Offered</div></div>
+        <div class="stat"><div class="stat-num">100%</div><div class="stat-label">Remote Ready</div></div>
+      </div>
+    </div>
+    <div class="photo-col">
+      <div class="photo-frame reveal reveal-delay-2">
+        <img src="Man_wearing_professional_suit_202605311945.jpeg" alt="Rogelio Inobaya"/>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services" class="page">
+  <div class="glow glow-1"></div>
+  <div class="section-inner">
+    <div class="section-tag reveal">What I Do</div>
+    <h2 class="reveal reveal-delay-1">Services &amp;<br>Expertise</h2>
+    <p class="section-sub reveal reveal-delay-2">From automating repetitive tasks to building seamless app integrations — I deliver solutions that save time and drive results.</p>
+
+    <div class="services-grid">
+      <div class="svc-card reveal">
+        <div class="svc-icon">🤖</div>
+        <h3>AI Workflow Automation</h3>
+        <p>Design and deploy intelligent automation pipelines using AI tools that eliminate manual work and scale your business operations effortlessly.</p>
+      </div>
+      <div class="svc-card reveal reveal-delay-1">
+        <div class="svc-icon">🔗</div>
+        <h3>Application Integrations</h3>
+        <p>Connect your CRM, email, forms, and third-party tools into unified systems. Data flows where it needs to go — automatically.</p>
+      </div>
+      <div class="svc-card reveal reveal-delay-2">
+        <div class="svc-icon">🎨</div>
+        <h3>Website &amp; Funnel Design</h3>
+        <p>Build conversion-focused websites and sales funnels using WordPress and ClickFunnels. Clean design that turns visitors into clients.</p>
+      </div>
+      <div class="svc-card reveal reveal-delay-3">
+        <div class="svc-icon">☁️</div>
+        <h3>M365 Administration</h3>
+        <p>Manage Microsoft 365 environments — users, licenses, SharePoint, Teams, and security configurations for businesses of all sizes.</p>
+      </div>
+      <div class="svc-card reveal reveal-delay-4">
+        <div class="svc-icon">🛠️</div>
+        <h3>General Technical Support</h3>
+        <p>Reliable troubleshooting and IT support for software, platforms, and tools. Fast, clear communication to get issues resolved quickly.</p>
+      </div>
+    </div>
+
+    <!-- Tool Logo Cards -->
+    <div class="tools-section reveal">
+      <p class="tools-label">Tools &amp; Platforms I Work With</p>
+      <div class="tools-grid">
+        
+      <div class="tool-card">
+        <div class="tool-logo"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="20" cy="20" r="18" fill="#F5A623"/>
+  <text x="20" y="26" text-anchor="middle" font-family="Arial Black,sans-serif" font-weight="900" font-size="14" fill="#000">GHL</text>
+</svg></div>
+        <span class="tool-name">GoHighLevel</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-logo"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="20" cy="15" r="5" fill="#FF7A59"/>
+  <circle cx="20" cy="15" r="2.5" fill="#fff"/>
+  <line x1="20" y1="20" x2="20" y2="30" stroke="#FF7A59" stroke-width="3" stroke-linecap="round"/>
+  <line x1="20" y1="25" x2="28" y2="21" stroke="#FF7A59" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="20" y1="25" x2="12" y2="21" stroke="#FF7A59" stroke-width="2.5" stroke-linecap="round"/>
+</svg></div>
+        <span class="tool-name">HubSpot</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-logo"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <path d="M20 8L24.5 16.5H31L25 21.5L27.5 30L20 25.5L12.5 30L15 21.5L9 16.5H15.5L20 8Z" fill="#FF4A00"/>
+</svg></div>
+        <span class="tool-name">Zapier</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-logo"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="4" y="14" width="12" height="12" rx="6" fill="#EA4B71"/>
+  <rect x="24" y="14" width="12" height="12" rx="6" fill="#EA4B71"/>
+  <line x1="16" y1="20" x2="24" y2="20" stroke="#EA4B71" stroke-width="3"/>
+  <circle cx="20" cy="20" r="3" fill="#EA4B71"/>
+</svg></div>
+        <span class="tool-name">N8N</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-logo"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="10" cy="20" r="5" fill="#6C2BD9"/>
+  <circle cx="30" cy="20" r="5" fill="#6C2BD9"/>
+  <line x1="15" y1="20" x2="25" y2="20" stroke="#6C2BD9" stroke-width="3"/>
+  <circle cx="10" cy="20" r="2" fill="#fff"/>
+  <circle cx="30" cy="20" r="2" fill="#fff"/>
+</svg></div>
+        <span class="tool-name">Make</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-logo"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="6" y="10" width="28" height="24" rx="4" stroke="#006BFF" stroke-width="2.5" fill="none"/>
+  <line x1="6" y1="17" x2="34" y2="17" stroke="#006BFF" stroke-width="2"/>
+  <line x1="14" y1="6" x2="14" y2="14" stroke="#006BFF" stroke-width="2.5" stroke-linecap="round"/>
+  <line x1="26" y1="6" x2="26" y2="14" stroke="#006BFF" stroke-width="2.5" stroke-linecap="round"/>
+  <rect x="12" y="21" width="5" height="5" rx="1" fill="#006BFF"/>
+  <rect x="22" y="21" width="5" height="5" rx="1" fill="#006BFF"/>
+</svg></div>
+        <span class="tool-name">Calendly</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-logo"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="20" cy="20" r="16" fill="#7D2AE8"/>
+  <text x="20" y="26" text-anchor="middle" font-family="Georgia,serif" font-weight="bold" font-size="18" fill="#fff">C</text>
+</svg></div>
+        <span class="tool-name">Canva</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-logo"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="20" cy="20" r="16" fill="#21759B"/>
+  <circle cx="20" cy="20" r="10" fill="none" stroke="#fff" stroke-width="1.5"/>
+  <line x1="20" y1="10" x2="20" y2="30" stroke="#fff" stroke-width="1.5"/>
+  <line x1="10" y1="20" x2="30" y2="20" stroke="#fff" stroke-width="1.5"/>
+  <path d="M12 14 Q20 10 28 14" stroke="#fff" stroke-width="1.2" fill="none"/>
+  <path d="M12 26 Q20 30 28 26" stroke="#fff" stroke-width="1.2" fill="none"/>
+</svg></div>
+        <span class="tool-name">WordPress</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-logo"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <rect x="8" y="6" width="24" height="30" rx="3" fill="#0A7AFF"/>
+  <line x1="13" y1="14" x2="27" y2="14" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <line x1="13" y1="19" x2="27" y2="19" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+  <line x1="13" y1="24" x2="22" y2="24" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
+</svg></div>
+        <span class="tool-name">Jotform</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-logo"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <circle cx="20" cy="20" r="16" fill="#356AE6"/>
+  <polyline points="10,24 16,16 20,22 26,14 30,18" stroke="#fff" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" fill="none"/>
+</svg></div>
+        <span class="tool-name">ActiveCampaign</span>
+      </div>
+      <div class="tool-card">
+        <div class="tool-logo"><svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <polygon points="8,10 32,10 28,18 12,18" fill="#E8612C" opacity="0.9"/>
+  <polygon points="12,20 28,20 24,28 16,28" fill="#E8612C" opacity="0.75"/>
+  <polygon points="16,30 24,30 20,38" fill="#E8612C" opacity="0.6"/>
+</svg></div>
+        <span class="tool-name">ClickFunnels</span>
+      </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact" class="page">
+  <div class="glow glow-2"></div>
+  <div class="contact-grid">
+    <div class="contact-info">
+      <div class="section-tag reveal">Let's Work Together</div>
+      <h2 class="reveal reveal-delay-1">Ready to<br>Automate &amp;<br>Grow?</h2>
+      <p class="reveal reveal-delay-2">Whether you need a complex automation built, apps integrated, or a high-converting website — I'm here to help. Reach out and let's talk about your project.</p>
+      <div class="contact-item reveal reveal-delay-2">
+        <div class="contact-icon">📧</div>
+        <div class="contact-detail">
+          <div class="c-label">Email</div>
+          <div class="c-val"><a href="mailto:rogelioinobaya87@gmail.com">rogelioinobaya87@gmail.com</a></div>
+        </div>
+      </div>
+      <div class="contact-item reveal reveal-delay-3">
+        <div class="contact-icon">📍</div>
+        <div class="contact-detail">
+          <div class="c-label">Location</div>
+          <div class="c-val">Pasig City, Philippines</div>
+        </div>
+      </div>
+      <div class="contact-item reveal reveal-delay-4">
+        <div class="contact-icon">🌐</div>
+        <div class="contact-detail">
+          <div class="c-label">Availability</div>
+          <div class="c-val">Open for Remote Work &amp; Freelance</div>
+        </div>
+      </div>
+    </div>
+<div class="contact-form reveal reveal-delay-2">
+  <h3>Send Me a Message</h3>
+  <iframe
+    src="https://form.jotform.com/261503623404043"
+    style="width:100%;min-height:850px;border:none;border-radius:8px;"
+    scrolling="no"
+    allowtransparency="true">
+  </iframe>
+</div>
+</section>
+
+<footer>
+  <div class="footer-copy">© 2025 <span>GTechnologies</span>. All rights reserved.</div>
+  <div class="footer-links">
+    <a href="#home">Home</a>
+    <a href="#services">Services</a>
+    <a href="#contact">Contact</a>
+    <a href="mailto:rogelioinobaya87@gmail.com"></a>
+  </div>
+</footer>
+
+<script>
+const revealEls = document.querySelectorAll('.reveal');
+const io = new IntersectionObserver((entries) => {
+  entries.forEach(e => { if(e.isIntersecting){ e.target.classList.add('visible'); io.unobserve(e.target); } });
+}, {threshold:0.1});
+revealEls.forEach(el => io.observe(el));
+document.querySelectorAll('#home .reveal').forEach(el => el.classList.add('visible'));
+
+function setActive(el){
+  document.querySelectorAll('.nav-links a').forEach(a => a.classList.remove('active'));
+  el.classList.add('active');
+}
+window.addEventListener('scroll', () => {
+  ['home','services','contact'].forEach(id => {
+    const el = document.getElementById(id);
+    const rect = el.getBoundingClientRect();
+    if(rect.top <= 80 && rect.bottom >= 80){
+      document.querySelectorAll('.nav-links a').forEach(a => {
+        a.classList.toggle('active', a.getAttribute('href') === '#'+id);
+      });
+    }
+  });
+});
+function handleSubmit(e){
+  e.preventDefault();
+  document.getElementById('contactForm').style.display='none';
+  document.getElementById('form-success').style.display='block';
+}
+</script>
+</body>
+</html>
